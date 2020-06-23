@@ -8,8 +8,6 @@ class TestService {
             "Accept": "application/json"
           }
     }
-    
-    // Class Method to Format Test
 
     static testData(id,name,content) {
         id = id,

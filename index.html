@@ -7,15 +7,6 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content=""> -->
-
-  <!-- <link rel="manifest" href="site.webmanifest"> -->
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
 
@@ -24,28 +15,35 @@
 
 <body>
 
-  <!-- Add your site or application content here -->
-
   <header>
     <nav>
 
     </nav>
   </header>
-  
+<label for="select-test">Select Content</label>
+<select id="test-dropdown" name="select-test">
+</select>
   <main>
+    <section id="score-container">
+    </section>
 
+    <section id="test-container">
+    </section>
+
+    <section id="score-form">
+      <form>
+        <input type="text">
+      </form>
+    </section>
   </main>
 
-
-
   <footer>
-
   </footer>
 
-  <!-- Javascript Scripts ? -->
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+  <!-- Javascript Scripts -->
+  <script src="js/services/testService.js"></script>
+  <script src="js/models/test.js"></script>
+  <script src="js/index.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>

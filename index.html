@@ -24,14 +24,34 @@
 <select id="test-dropdown" name="select-test">
 </select>
   <main>
+    <section id="data-container">
+      <div id="wpm">
+        <h2>0</h2>
+        <h6>WORDS / MIN</h6>
+      </div>
+      <div id="cpm">
+        <h2>0</h2>
+        <h6>CHARS / MIN</h6>
+      </div>
+      <div id="accuracy">
+        <h2>0</h2>
+        <h6>ACCURACY</h6>
+      </div>
+    </section>
+
+    <section id="timer-container">
+      <h2>15</h2>
+      <h6>SEC</h6>
+    </section>
+    
     <section id="score-container">
     </section>
 
     <section id="test-container">
     </section>
 
-    <section id="score-form">
-      <form>
+    <section class="score-form-section">
+      <form id="score-form">
         <input type="text">
       </form>
     </section>
@@ -42,7 +62,9 @@
 
   <!-- Javascript Scripts -->
   <script src="js/services/testService.js"></script>
+  <script src="js/services/scoreService.js"></script>
   <script src="js/models/test.js"></script>
+  <script src="js/models/score.js"></script>
   <script src="js/index.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->

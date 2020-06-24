@@ -5,16 +5,17 @@ class Score {
         this.cpm = cpm
     }
 
-    
-
     static startTimer() {
         return setInterval(this.decreaseTimer, 1000)
     }
     static startTestListener() {
         const input = document.querySelector("input")
         input.addEventListener("click", () => {
-            const currentTimer = this.startTimer()
-            
+            const currentTime = this.startTimer()
+            setTimeout(function() {
+                clearInterval(currentTime),
+                ScoreService.postScore()
+            }, 1000 * 61)
         })
     }
 
@@ -42,10 +43,6 @@ class Score {
                 cpm.innerHTML = 5
             }            
             time.innerHTML = parseInt(time.innerHTML)-1
-        } else {
-            clearInterval(this.currentTimer)
-            ScoreService.postScore()
-            
         }
     }
 
@@ -72,4 +69,22 @@ class Score {
             return grossWPM
         }
     }
+
+    // Clear Score Form & Data
+    clearFormAndData() {
+        document.querySelector("input").value = ''
+        document.querySelector("#wpm h2").innerText = '0'
+        document.querySelector("#cpm h2").innerText = '0'
+        document.querySelector("#accuracy h2").innerText = '0'
+        document.querySelector("#timer-container h2").innerText = '60'
+    }
+
+    // Display Score
+    renderScore() {
+        alert(
+            `WORDS / MIN - ${this.wpm}\nCHARS / MIN - ${this.cpm}`)
+        this.clearFormAndData()
+    }
+
+
 }

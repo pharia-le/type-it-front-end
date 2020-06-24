@@ -18,9 +18,8 @@ class ScoreService {
             return response.json()
         })
         .then(function(obj) {
-            debugger
             const {id,wpm,cpm} = obj
-            new Test(id,wpm,cpm).addTestOption()
+            new Score(id,wpm,cpm).renderScore()
         })
         .catch(function(error) {
             console.log(error.message)

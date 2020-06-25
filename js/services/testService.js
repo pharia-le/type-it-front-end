@@ -47,4 +47,32 @@ class TestService {
         })
     }
 
+    static likeTest() {
+        const testID = parseInt(document.querySelector("#test-container").value)
+        const updatedLikes = parseInt(document.querySelector("#test-container h4").innerText.split(" ")[0])+1
+        let testData = {
+            id: testID,
+            likes: updatedLikes
+        }
+        debugger
+        fetch(`${this.baseURL}/${testID}`, {
+            headers: {
+                'Content-Type': 'application/json'
+                },
+            method: 'PATCH',
+            body: JSON.stringify(testData)
+        })
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(object) {
+            const {id,title,author,content,likes} = object
+            new Test(id,title,author,content,likes).renderTest()
+        })
+        .catch(function(error) {
+            console.log(error.message)
+        })
+
+
+    }
 }

@@ -33,6 +33,10 @@
         <h2>0</h2>
         <h6>CHARS / MIN</h6>
       </div>
+      <div id="errors">
+        <h2>0</h2>
+        <h6>Word Errors</h6>
+      </div>
       <div id="accuracy">
         <h2>0</h2>
         <h6>ACCURACY</h6>
@@ -52,7 +56,7 @@
 
     <section class="score-form-section">
       <form id="score-form">
-        <input type="text">
+        <input type="text" onkeydown="Score.keyRestrictions(event)" disabled=true>
         <button type="button" id="start-button">Start Test</button>
       </form>
     </section>
@@ -68,12 +72,6 @@
   <script src="js/models/score.js"></script>
   <script src="js/index.js"></script>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 
 </html>

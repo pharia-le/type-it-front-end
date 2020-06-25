@@ -9,8 +9,12 @@ class Score {
         return setInterval(this.decreaseTimer, 1000)
     }
     static startTestListener() {
-        const input = document.querySelector("input")
-        input.addEventListener("click", () => {
+        const button = document.getElementById("start-button")
+        button.addEventListener("click", () => {
+            const selector = document.getElementById("test-dropdown")
+            const button = document.getElementById("start-button")
+            selector.disabled = true
+            button.disabled = true
             const currentTime = this.startTimer()
             setTimeout(function() {
                 clearInterval(currentTime),
@@ -84,6 +88,10 @@ class Score {
         alert(
             `WORDS / MIN - ${this.wpm}\nCHARS / MIN - ${this.cpm}`)
         this.clearFormAndData()
+        const selector = document.getElementById("test-dropdown")
+        selector.disabled = false
+        const button = document.getElementById("start-button")
+        button.disabled = false
     }
 
 

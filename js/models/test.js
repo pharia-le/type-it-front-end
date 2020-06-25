@@ -1,8 +1,10 @@
 class Test {
-    constructor(id,name,content) {
+    constructor(id,title,author,content,likes) {
         this.id = id
-        this.name = name
+        this.title = title
+        this.author = author
         this.content = content
+        this.likes = likes
     }
 
     // Event Listener for Select a Test
@@ -36,7 +38,7 @@ class Test {
     // Create HTML for a Test
     testHTML() {
         return `
-            <h3>${this.name}</h3>
+            <h3>${this.title}</h3>
             <p>${this.content}</p>
             `
     }
@@ -45,7 +47,7 @@ class Test {
     addTestOption() {
         const option = document.createElement("option")
         option.value = this.id
-        option.innerHTML = this.name
+        option.innerHTML = this.title
         const testDropdown = document.getElementById("test-dropdown")
         testDropdown.add(option)
     }

@@ -31,6 +31,7 @@ class Test {
 
     // Display a Test
     renderTest() {
+        document.querySelector("input").value = ''
         this.clearTest()
         this.addTest()
     }
@@ -39,9 +40,10 @@ class Test {
     testHTML() {
         return `
             <h3>${this.title}</h3>
-            <h4>${this.likes} Likes</h4>
+            <h4>by ${this.author}</h4>
+            <h5>${this.likes} Likes</h5>
             <button onclick=TestService.likeTest() type="button" id="like-button">Like</button>
-            <p>${this.content}</p>
+            <p>${this.content.split(" ").map(word => `<span id='test-word'>${word}</span>`).join(" ")}</p>
             `
     }
 
@@ -53,4 +55,5 @@ class Test {
         const testDropdown = document.getElementById("test-dropdown")
         testDropdown.add(option)
     }
+
 }

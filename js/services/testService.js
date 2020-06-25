@@ -9,10 +9,12 @@ class TestService {
           }
     }
 
-    static testData(id,name,content) {
+    static testData(id,title,content) {
         id = id,
-        name = name,
-        content = content
+        title = title,
+        author = author,
+        content = content,
+        likes = likes
     }
     
     static fetchTests() {
@@ -22,8 +24,8 @@ class TestService {
         })
         .then(function(objects) {
             for (const obj of objects) {
-                const {id,name,content} = obj
-                new Test(id,name,content).addTestOption()
+                const {id,title,author,content,likes} = obj
+                new Test(id,title,author,content,likes).addTestOption()
             }
         })
         .catch(function(error) {
@@ -37,8 +39,8 @@ class TestService {
             return response.json()
         })
         .then(function(object) {
-            const {id,name,content} = object
-            new Test(id,name,content).renderTest()
+            const {id,title,author,content,likes} = object
+            new Test(id,title,author,content,likes).renderTest()
         })
         .catch(function(error) {
             console.log(error.message)

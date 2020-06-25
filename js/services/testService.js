@@ -49,12 +49,10 @@ class TestService {
 
     static likeTest() {
         const testID = parseInt(document.querySelector("#test-container").value)
-        const updatedLikes = parseInt(document.querySelector("#test-container h4").innerText.split(" ")[0])+1
+        const updatedLikes = parseInt(document.querySelector("#test-container h5").innerText.split(" ")[0])+1
         let testData = {
-            id: testID,
             likes: updatedLikes
         }
-        debugger
         fetch(`${this.baseURL}/${testID}`, {
             headers: {
                 'Content-Type': 'application/json'

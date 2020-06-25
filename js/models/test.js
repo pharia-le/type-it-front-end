@@ -39,6 +39,8 @@ class Test {
     testHTML() {
         return `
             <h3>${this.title}</h3>
+            <h4>${this.likes} Likes</h4>
+            <button onclick=TestService.likeTest() type="button" id="like-button">Like</button>
             <p>${this.content}</p>
             `
     }

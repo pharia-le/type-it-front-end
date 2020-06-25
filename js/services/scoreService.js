@@ -6,6 +6,7 @@ class ScoreService {
             wpm: parseInt(document.querySelector("#wpm h2").innerHTML),
             cpm: parseInt(document.querySelector("#cpm h2").innerHTML),
             accuracy: parseInt(document.querySelector("#accuracy h2").innerHTML.split(" ")[0]),
+            errors_count: parseInt(document.querySelector("#errors h2").innerText),
             test_id: document.querySelector("#test-container").value
         }
         fetch(this.baseURL, {
@@ -19,8 +20,8 @@ class ScoreService {
             return response.json()
         })
         .then(function(obj) {
-            const {id,wpm,cpm,accuracy} = obj
-            new Score(id,wpm,cpm,accuracy).renderScore()
+            const {id,wpm,cpm,accuracy,errors_count} = obj
+            new Score(id,wpm,cpm,accuracy,errors_count).renderScore()
         })
         .catch(function(error) {
             console.log(error.message)

@@ -1,9 +1,10 @@
 class Score {
-    constructor(id,wpm,cpm,accuracy) {
+    constructor(id,wpm,cpm,accuracy,errors_count) {
         this.id = id
         this.wpm = wpm
         this.cpm = cpm
         this.accuracy = accuracy
+        this.errors_count = errors_count
     }
 
     static spaceListener() {
@@ -21,7 +22,6 @@ class Score {
         const inputWordsSplit = document.querySelector("input").value.split(" ")
         const inputWord = inputWordsSplit[inputWordsSplit.length-2]
         const same = (testWord.innerText === inputWord)
-        console.log(same)
         same ? testWord.id = "test-word-right" : testWord.id = "test-word-wrong"
         const errorSaver = document.querySelector("#errors h2")              
         if (!same) {
@@ -102,6 +102,6 @@ class Score {
         Score.toggler()
         TestService.fetchTest(parseInt(document.querySelector("#test-container").value))
         alert(
-            `WORDS / MIN - ${this.wpm}\nCHARS / MIN - ${this.cpm}\nACCURACY - ${this.accuracy} %`)
+            `WORDS / MIN : ${this.wpm}\nCHARS / MIN : ${this.cpm}\nTOTAL ERRORS : ${this.errors_count}\nACCURACY : ${this.accuracy} %`)
     }
 }

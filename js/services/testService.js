@@ -8,14 +8,6 @@ class TestService {
             "Accept": "application/json"
           }
     }
-
-    static testData(id,title,content) {
-        id = id,
-        title = title,
-        author = author,
-        content = content,
-        likes = likes
-    }
     
     static fetchTests() {
         fetch(this.baseURL,this.options)

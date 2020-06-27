@@ -17,12 +17,16 @@
 
   <header>
     <nav>
-
+    
     </nav>
+    <div>
+      <h1>Type It</h1>
+    </div>
+    <div>
+      <h5>A great way to improve your Typing Skills</h5>
+    <div>
   </header>
-<label for="select-test">Select Content</label>
-<select id="test-dropdown" name="select-test">
-</select>
+
   <main>
     <section id="data-container">
       <div id="wpm">
@@ -35,7 +39,7 @@
       </div>
       <div id="errors">
         <h2>0</h2>
-        <h6>Word Errors</h6>
+        <h6>WORD ERRORS</h6>
       </div>
       <div id="accuracy">
         <h2>0</h2>
@@ -51,12 +55,18 @@
     <section id="score-container">
     </section>
 
+    <!-- <label for="select-test">Select Content</label> -->
+    <select id="test-dropdown" name="select-test">
+    </select>
+    
     <section id="test-container">
     </section>
-
+    
     <section class="score-form-section">
       <form id="score-form">
         <input type="text" onkeydown="Score.keyRestrictions(event)" disabled=true>
+        <br>
+        <br>
         <button type="button" id="start-button">Start Test</button>
       </form>
     </section>

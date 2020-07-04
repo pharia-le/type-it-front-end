@@ -12,7 +12,7 @@ class Test {
         const testDropdown = document.getElementById("test-dropdown")
         testDropdown.addEventListener("change", (e) => {
             const id = parseInt(e.target.value)
-            TestService.fetchTest(id)
+            TestService.addTest(id)
         })
     }
 
@@ -23,7 +23,7 @@ class Test {
     }
 
     // Add a Test
-    addTest() {
+    appendTest() {
         const testContainer = document.getElementById("test-container")
         testContainer.value = this.id
         testContainer.innerHTML += this.testHTML()
@@ -33,7 +33,7 @@ class Test {
     renderTest() {
         document.querySelector("input").value = ''
         this.clearTest()
-        this.addTest()
+        this.appendTest()
     }
 
     // Create HTML for a Test
@@ -55,5 +55,4 @@ class Test {
         const testDropdown = document.getElementById("test-dropdown")
         testDropdown.add(option)
     }
-
 }

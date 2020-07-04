@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    TestService.fetchTests()
-    TestService.fetchTest(1)
+    TestService.addTests()
+    TestService.addTest(1)
     Test.testDropdownListener()
     Score.startTestListener()
-
 })
 

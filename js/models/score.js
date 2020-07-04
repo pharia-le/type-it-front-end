@@ -100,7 +100,7 @@ class Score {
     renderScore() {
         this.clearFormAndData()
         Score.toggler()
-        TestService.fetchTest(parseInt(document.querySelector("#test-container").value))
+        TestService.addTest(parseInt(document.querySelector("#test-container").value))
         alert(
             `WORDS / MIN : ${this.wpm}\nCHARS / MIN : ${this.cpm}\nTOTAL ERRORS : ${this.errors_count}\nACCURACY : ${this.accuracy} %`)
     }

@@ -1,5 +1,4 @@
 class TestService {
-
     static baseURL = 'http://localhost:3000/tests'
 
     static options = {
@@ -9,7 +8,7 @@ class TestService {
           }
     }
     
-    static fetchTests() {
+    static addTests() {
         fetch(this.baseURL,this.options)
         .then(function(response) {
             return response.json()
@@ -25,7 +24,7 @@ class TestService {
         })
     }
 
-    static fetchTest(id) {
+    static addTest(id) {
         fetch(`${this.baseURL}/${id}`,this.options)
         .then(function(response) {
             return response.json()
@@ -62,7 +61,5 @@ class TestService {
         .catch(function(error) {
             console.log(error.message)
         })
-
-
     }
 }

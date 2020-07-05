@@ -7,20 +7,11 @@ class Score {
         this.errors_count = errors_count
     }
 
-    static spaceListener() {
-        const input = document.querySelector("input")
-        input.addEventListener("input", (e) => {
-            if (e.data == " ") {
-                this.updateData()
-            }
-        })
-    }
-
     static updateData() {
         const testWord = document.getElementById("test-word")
         const inputWords = document.querySelector("input").value
         const inputWordsSplit = document.querySelector("input").value.split(" ")
-        const inputWord = inputWordsSplit[inputWordsSplit.length-2]
+        const inputWord = inputWordsSplit[inputWordsSplit.length-1]
         const same = (testWord.innerText === inputWord)
         same ? testWord.id = "test-word-right" : testWord.id = "test-word-wrong"
         const errorSaver = document.querySelector("#errors h2")              
@@ -29,7 +20,7 @@ class Score {
         }
         const errorNum = parseInt(errorSaver.innerText,10)
         const accuracy = document.querySelector("#accuracy h2")
-        accuracy.innerText = `${parseInt((inputWordsSplit.length-errorNum)*100/inputWordsSplit.length,10)}`
+        accuracy.innerText = `${parseInt((inputWordsSplit.length-errorNum)*100/inputWordsSplit.length,10)} %`
         const time = document.querySelector("#timer-container h2")
         const timeElapsed = 60 - parseInt(time.innerText)
         const grossWPM = parseInt((inputWords.length/5)/(timeElapsed/60),10)
@@ -40,7 +31,7 @@ class Score {
         cpm.innerText = `${newCPM-errorNum}`
     }
 
-    static keyRestrictions(event) {
+    static handleKeyDowns(event) {
         const space = 32
         const backspace = 8;
         if (event.keyCode == backspace) {
@@ -48,6 +39,9 @@ class Score {
         }
         if (event.keyCode == space && document.querySelector("input").value.slice(-1) == " ") {
             event.preventDefault()
+        }
+        if (event.keyCode == space && document.querySelector("input").value.slice(-1) != " ") {
+            this.updateData()
         }
     }
 
@@ -69,7 +63,6 @@ class Score {
         const button = document.getElementById("start-button")
         button.addEventListener("click", () => {
             this.toggler()
-            this.spaceListener()
             const currentTime = this.startTimer()
             setTimeout(function() {
                 clearInterval(currentTime),
@@ -88,7 +81,7 @@ class Score {
 
     // Clear Score Form & Data
     clearFormAndData() {
-        document.querySelector("input").value = ''
+        document.getElementById("score-form").reset()
         document.querySelector("#wpm h2").innerText = '0'
         document.querySelector("#cpm h2").innerText = '0'
         document.querySelector("#accuracy h2").innerText = '0'
@@ -101,7 +94,33 @@ class Score {
         this.clearFormAndData()
         Score.toggler()
         TestService.addTest(parseInt(document.querySelector("#test-container").value))
-        alert(
-            `WORDS / MIN : ${this.wpm}\nCHARS / MIN : ${this.cpm}\nTOTAL ERRORS : ${this.errors_count}\nACCURACY : ${this.accuracy} %`)
+        const modal = document.getElementById("myModal")
+        const modalBody = document.getElementsByClassName("modal-body")[0]
+        modalBody.innerHTML += this.scoreHTML()
+        const span = document.getElementsByClassName("close")[0]
+        modal.style.display = "block"
+        span.onclick = function() {
+            modal.style.display = "none";
+            modalBody.removeChild(modalBody.lastElementChild)
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none"
+              modalBody.removeChild(modalBody.lastElementChild)
+            }
+          }
     }
+
+    // Score HTML
+    scoreHTML() {
+        return `
+        <ul>
+            <h3>WORDS / MIN : ${this.wpm}</h3>
+            <h3>CHARS / MIN : ${this.cpm}</h3>
+            <h3>TOTAL ERRORS : ${this.errors_count}</h3>
+            <h3>ACCURACY : ${this.accuracy} %</h3>
+        </ul>
+        `
+    }
+
 }

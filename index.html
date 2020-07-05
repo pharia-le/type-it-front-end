@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Type It</title>
-  <meta name="description" content="">
+  <meta name="Type It" content="A web application for taking a typing test.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="css/normalize.css">
@@ -16,14 +16,11 @@
 <body>
 
   <header>
-    <nav>
-    
-    </nav>
     <div>
       <h1>Type It</h1>
     </div>
     <div>
-      <h5>A great way to improve your Typing Skills</h5>
+      <h5>A great way to improve your typing skills</h5>
     <div>
   </header>
 
@@ -53,9 +50,25 @@
     </section>
     
     <section id="score-container">
+      <!-- Score Modal -->
+      <div id="myModal" class="modal">
+      <!-- Score Content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Your Results</h2>
+        </div>
+        <div class="modal-body">
+          <blockquote>As practice makes perfect, I cannot but make progress; each drawing one makes, each study one paints, is a step forward.
+            <small>Vincent Van Gogh</small>
+          </blockquote>
+        </div>
+        <div class="modal-footer">
+          <h3>Keep on typin' friend!</h3>
+        </div>
+      </div>
     </section>
 
-    <!-- <label for="select-test">Select Content</label> -->
     <select id="test-dropdown" name="select-test">
     </select>
     
@@ -64,16 +77,13 @@
     
     <section class="score-form-section">
       <form id="score-form">
-        <input type="text" onkeydown="Score.keyRestrictions(event)" disabled=true>
+        <input type="text" onkeydown="Score.handleKeyDowns(event)" disabled=true>
         <br>
         <br>
         <button type="button" id="start-button">Start Test</button>
       </form>
     </section>
   </main>
-
-  <footer>
-  </footer>
 
   <!-- Javascript Scripts -->
   <script src="js/services/testService.js"></script>

@@ -38,6 +38,26 @@ class TestService {
         })
     }
 
+    static addScores() {
+        const testID = parseInt(document.querySelector("#test-container").value)
+        fetch(`${this.baseURL}/${testID}`,this.options)
+        .then(function(response) {
+            return response.json()
+        })
+        .then(function(test) {
+            const scores = test.scores
+            Score.addTableToModal()
+            Score.modalListener()
+            for (const score of scores) {
+                const {id,wpm,cpm,accuracy,errors_count} = score
+                new Score(id,wpm,cpm,accuracy,errors_count).addScoreToModal()
+            }
+        })
+        .catch(function(error) {
+            console.log(error.message)
+        })
+    }
+
     static likeTest() {
         const testID = parseInt(document.querySelector("#test-container").value)
         const updatedLikes = parseInt(document.querySelector("#test-container h5").innerText.split(" ")[0])+1

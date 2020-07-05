@@ -46,6 +46,7 @@ class Score {
     }
 
     static toggler() {
+        const scores = document.getElementById("myBtn")
         const input = document.querySelector("input")
         const selector = document.getElementById("test-dropdown")
         const start = document.getElementById("start-button")
@@ -54,6 +55,7 @@ class Score {
         selector.disabled ? selector.disabled = false : selector.disabled = true
         start.disabled ? start.disabled = false : start.disabled = true
         like.disabled ? like.disabled = false : like.disabled = true
+        scores.disabled ? scores.disabled = false : scores.disabled = true
     }
 
     static startTimer() {
@@ -123,4 +125,50 @@ class Score {
         `
     }
 
+    addScoreToModal() {
+        const scoresTable = document.getElementById("scores-table")
+        scoresTable.innerHTML += this.modalHTML()
+    }
+
+    modalHTML() {
+        return `
+        <tr>
+            <td>${this.wpm}</td>
+            <td>${this.cpm}</td>
+            <td>${this.errors_count}</td>
+            <td>${this.accuracy}</td>
+        </tr>
+        `
+    }
+    
+    static addTableToModal() {
+    const modalBody = document.getElementsByClassName("modal-body")[1]
+    modalBody.innerHTML += `
+        <table id="scores-table">
+            <tr>
+                <th>WORDS / MIN</th>
+                <th>CHARS / MIN</th>
+                <th>TOTAL ERRORS</th>
+                <th>ACCURACY</th>
+            </tr>
+        </table>
+        `
+    }
+
+    static modalListener() {
+        const modal = document.getElementById("scoresModal")
+        const modalBody = document.getElementsByClassName("modal-body")[1]
+        const span = document.getElementsByClassName("close")[1]
+        modal.style.display = "block"
+        span.onclick = function() {
+            modal.style.display = "none";
+            modalBody.removeChild(modalBody.lastElementChild)
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none"
+              modalBody.removeChild(modalBody.lastElementChild)
+            }
+          }
+    }
 }

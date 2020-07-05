@@ -7,7 +7,6 @@
   <meta name="Type It" content="A web application for taking a typing test.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
@@ -49,24 +48,44 @@
       <h6>SEC</h6>
     </section>
     
-    <section id="score-container">
+    <section id="score-container"> 
       <!-- Score Modal -->
       <div id="myModal" class="modal">
-      <!-- Score Content -->
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close">&times;</span>
-          <h2>Your Results</h2>
-        </div>
-        <div class="modal-body">
-          <blockquote>As practice makes perfect, I cannot but make progress; each drawing one makes, each study one paints, is a step forward.
-            <small>Vincent Van Gogh</small>
-          </blockquote>
-        </div>
-        <div class="modal-footer">
-          <h3>Keep on typin' friend!</h3>
+        <!-- Score Content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Your Results</h2>
+          </div>
+          <div class="modal-body">
+            <blockquote>As practice makes perfect, I cannot but make progress; each drawing one makes, each study one paints, is a step forward.
+              <small>Vincent Van Gogh</small>
+            </blockquote>
+          </div>
+          <div class="modal-footer">
+            <h3>Keep on typin' friend!</h3>
+          </div>
         </div>
       </div>
+      <!-- Trigger/Open The Modal -->
+      <button id="myBtn" onclick=TestService.addScores()>Recent Scores</button>
+      <br>
+      <br>
+      <!-- All Scores Modal -->
+      <div id="scoresModal" class="modal">
+        <!-- All Scores Content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Recent Scores</h2>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <h3>Keep typing to improve your score!</h3>
+          </div>
+        </div>
+      </div>           
     </section>
 
     <select id="test-dropdown" name="select-test">

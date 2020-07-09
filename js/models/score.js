@@ -136,7 +136,7 @@ class Score {
             <td>${this.wpm}</td>
             <td>${this.cpm}</td>
             <td>${this.errors_count}</td>
-            <td>${this.accuracy}</td>
+            <td>${this.accuracy} %</td>
         </tr>
         `
     }

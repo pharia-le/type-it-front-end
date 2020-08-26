@@ -7,7 +7,6 @@ class Test {
         this.likes = likes
     }
 
-    // Event Listener for Select a Test
     static testDropdownListener() {
         const testDropdown = document.getElementById("test-dropdown")
         testDropdown.addEventListener("change", (e) => {
@@ -16,27 +15,23 @@ class Test {
         })
     }
 
-    // Clear a Test
     clearTest() {
         const testContainer = document.getElementById("test-container")
         testContainer.innerHTML = ''
     }
 
-    // Add a Test
     appendTest() {
         const testContainer = document.getElementById("test-container")
         testContainer.value = this.id
         testContainer.innerHTML += this.testHTML()
     }
 
-    // Display a Test
     renderTest() {
         document.querySelector("input").value = ''
         this.clearTest()
         this.appendTest()
     }
 
-    // Create HTML for a Test
     testHTML() {
         return `
             <h3>${this.title}</h3>
@@ -47,7 +42,6 @@ class Test {
             `
     }
 
-    // Add new Test Option to Test Options Selector
     addTestOption() {
         const option = document.createElement("option")
         option.value = this.id

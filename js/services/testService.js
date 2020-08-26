@@ -1,4 +1,5 @@
 class TestService {
+    
     static baseURL = 'http://localhost:3000/tests'
 
     static options = {
@@ -10,41 +11,31 @@ class TestService {
     
     static addTests() {
         fetch(this.baseURL,this.options)
-        .then(function(response) {
-            return response.json()
-        })
-        .then(function(objects) {
-            for (const obj of objects) {
-                const {id,title,author,content,likes} = obj
+        .then(resp => resp.json())
+        .then(tests => {
+            for (const test of tests) {
+                const {id,title,author,content,likes} = test
                 new Test(id,title,author,content,likes).addTestOption()
             }
         })
-        .catch(function(error) {
-            console.log(error.message)
-        })
+        .catch(error => console.log(error.message))
     }
 
     static addTest(id) {
         fetch(`${this.baseURL}/${id}`,this.options)
-        .then(function(response) {
-            return response.json()
-        })
-        .then(function(object) {
-            const {id,title,author,content,likes} = object
+        .then(resp => resp.json())
+        .then(test =>  {
+            const {id,title,author,content,likes} = test
             new Test(id,title,author,content,likes).renderTest()
         })
-        .catch(function(error) {
-            console.log(error.message)
-        })
+        .catch(error => console.log(error.message))
     }
 
     static addScores() {
         const testID = parseInt(document.querySelector("#test-container").value)
         fetch(`${this.baseURL}/${testID}`,this.options)
-        .then(function(response) {
-            return response.json()
-        })
-        .then(function(test) {
+        .then(resp => resp.json())
+        .then(test => {
             const scores = test.scores
             Score.addTableToModal()
             Score.modalListener()
@@ -53,9 +44,7 @@ class TestService {
                 new Score(id,wpm,cpm,accuracy,errors_count).addScoreToModal()
             }
         })
-        .catch(function(error) {
-            console.log(error.message)
-        })
+        .catch(error => console.log(error.message))
     }
 
     static likeTest() {
@@ -71,15 +60,11 @@ class TestService {
             method: 'PATCH',
             body: JSON.stringify(testData)
         })
-        .then(function(response) {
-            return response.json()
-        })
-        .then(function(object) {
-            const {id,title,author,content,likes} = object
+        .then(resp => resp.json())
+        .then(test => {
+            const {id,title,author,content,likes} = test
             new Test(id,title,author,content,likes).renderTest()
         })
-        .catch(function(error) {
-            console.log(error.message)
-        })
+        .catch(error => console.log(error.message))
     }
 }

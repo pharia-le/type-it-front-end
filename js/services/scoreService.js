@@ -1,8 +1,9 @@
 class ScoreService {
+    
     static baseURL = 'http://localhost:3000/scores'
     
     static postScore() {
-        let scoreData = {
+        const scoreData = {
             wpm: parseInt(document.querySelector("#wpm h2").innerHTML),
             cpm: parseInt(document.querySelector("#cpm h2").innerHTML),
             accuracy: parseInt(document.querySelector("#accuracy h2").innerHTML.split(" ")[0]),
@@ -16,16 +17,12 @@ class ScoreService {
             method: 'POST',
             body: JSON.stringify(scoreData)
         })
-        .then(function(response) {
-            return response.json()
-        })
-        .then(function(obj) {
-            const {id,wpm,cpm,accuracy,errors_count} = obj
+        .then(resp => resp.json())
+        .then(score => {
+            const {id,wpm,cpm,accuracy,errors_count} = score
             new Score(id,wpm,cpm,accuracy,errors_count).renderScore()
         })
-        .catch(function(error) {
-            console.log(error.message)
-        })
+        .catch(error => console.log(error.message))
     }
 }
 

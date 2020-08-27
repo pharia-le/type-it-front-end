@@ -61,6 +61,7 @@ class Score {
     static startTimer() {
         return setInterval(this.decreaseTimer, 1000)
     }
+    
     static startTestListener() {
         const button = document.getElementById("start-button")
         button.addEventListener("click", () => {
@@ -81,7 +82,6 @@ class Score {
         }
     }
 
-    // Clear Score Form & Data
     clearFormAndData() {
         document.getElementById("score-form").reset()
         document.querySelector("#wpm h2").innerText = '0'
@@ -91,8 +91,8 @@ class Score {
         document.querySelector("#timer-container h2").innerText = '60'
     }
 
-    // Display Score
     renderScore() {
+        debugger
         this.clearFormAndData()
         Score.toggler()
         TestService.addTest(parseInt(document.querySelector("#test-container").value))
@@ -113,16 +113,15 @@ class Score {
           }
     }
 
-    // Score HTML
     scoreHTML() {
         return `
-        <ul>
-            <h3>WORDS / MIN : ${this.wpm}</h3>
-            <h3>CHARS / MIN : ${this.cpm}</h3>
-            <h3>TOTAL ERRORS : ${this.errors_count}</h3>
-            <h3>ACCURACY : ${this.accuracy} %</h3>
-        </ul>
-        `
+            <ul>
+                <h3>WORDS / MIN : ${this.wpm}</h3>
+                <h3>CHARS / MIN : ${this.cpm}</h3>
+                <h3>TOTAL ERRORS : ${this.errors_count}</h3>
+                <h3>ACCURACY : ${this.accuracy} %</h3>
+            </ul>
+            `
     }
 
     addScoreToModal() {
@@ -132,27 +131,27 @@ class Score {
 
     modalHTML() {
         return `
-        <tr>
-            <td>${this.wpm}</td>
-            <td>${this.cpm}</td>
-            <td>${this.errors_count}</td>
-            <td>${this.accuracy} %</td>
-        </tr>
-        `
+            <tr>
+                <td>${this.wpm}</td>
+                <td>${this.cpm}</td>
+                <td>${this.errors_count}</td>
+                <td>${this.accuracy} %</td>
+            </tr>
+            `
     }
     
     static addTableToModal() {
-    const modalBody = document.getElementsByClassName("modal-body")[1]
-    modalBody.innerHTML += `
-        <table id="scores-table">
-            <tr>
-                <th>WORDS / MIN</th>
-                <th>CHARS / MIN</th>
-                <th>TOTAL ERRORS</th>
-                <th>ACCURACY</th>
-            </tr>
-        </table>
-        `
+        const modalBody = document.getElementsByClassName("modal-body")[1]
+        modalBody.innerHTML += `
+            <table id="scores-table">
+                <tr>
+                    <th>WORDS / MIN</th>
+                    <th>CHARS / MIN</th>
+                    <th>TOTAL ERRORS</th>
+                    <th>ACCURACY</th>
+                </tr>
+            </table>
+            `
     }
 
     static modalListener() {

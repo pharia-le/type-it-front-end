@@ -54,9 +54,7 @@ class TestService {
             likes: updatedLikes
         }
         fetch(`${this.baseURL}/${testID}`, {
-            headers: {
-                'Content-Type': 'application/json'
-                },
+            ...this.options,
             method: 'PATCH',
             body: JSON.stringify(testData)
         })

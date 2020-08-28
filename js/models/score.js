@@ -92,7 +92,6 @@ class Score {
     }
 
     renderScore() {
-        debugger
         this.clearFormAndData()
         Score.toggler()
         TestService.addTest(parseInt(document.querySelector("#test-container").value))
@@ -101,6 +100,10 @@ class Score {
         modalBody.innerHTML += this.scoreHTML()
         const span = document.getElementsByClassName("close")[0]
         modal.style.display = "block"
+        this.addModalListeners(modal, modalBody, span)
+    }
+
+    static addModalListeners(modal, modalBody, span) {
         span.onclick = function() {
             modal.style.display = "none";
             modalBody.removeChild(modalBody.lastElementChild)
@@ -110,7 +113,7 @@ class Score {
               modal.style.display = "none"
               modalBody.removeChild(modalBody.lastElementChild)
             }
-          }
+          }    
     }
 
     scoreHTML() {
@@ -159,15 +162,6 @@ class Score {
         const modalBody = document.getElementsByClassName("modal-body")[1]
         const span = document.getElementsByClassName("close")[1]
         modal.style.display = "block"
-        span.onclick = function() {
-            modal.style.display = "none";
-            modalBody.removeChild(modalBody.lastElementChild)
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-              modal.style.display = "none"
-              modalBody.removeChild(modalBody.lastElementChild)
-            }
-          }
+        this.addModalListeners(modal, modalBody, span)
     }
 }

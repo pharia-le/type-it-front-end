@@ -1,6 +1,6 @@
 # Type It
 
-Type It is a Ruby on Rails & Javascript application where a user may take a typing test that outputs ongoing calculations for typing speed and accuracy. Additionally, the scores are stored within our Rails API.
+Type It is a Ruby on Rails & Javascript web application where a user may take a typing test that outputs ongoing calculations for typing speed and accuracy. Additionally, scores are persisted to a Rails API.
 
 ### Installing
 
